@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UserAuth</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+  <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" %>  
+  <%= javascript_include_tag "jquery-rails.js" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "GettysTours", '#', id: "logo" %>
+        <nav>
+          <ul class="nav pull-right">
+            <li><%= link_to "Home", {:controller => 'sessions', :action => 'home'} %></li>
+            <li><%= link_to "Help", '#' %></li>
+            <% if session[:user_id].nil? %>
+              <li><%= link_to "Sign in", {:controller => 'sessions', :action => 'login'} %></li>
+            <% end %>
+            <% if session[:user_id] %>
+              <li><%= link_to "Sign out", {:controller => 'sessions', :action => 'logout' } %></li>
+            <% end %>  
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+<div class="container">
+  <%= yield %>
+</div>  
+</body>
+</html>
