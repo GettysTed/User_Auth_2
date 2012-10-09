@@ -20,4 +20,23 @@ class UsersController < ApplicationController
         
   end
   
+  def edit
+    @user = User.find session[:user_id]
+  end
+
+  def update
+    @user = User.find session[:user_id]
+    @user.username = params[:username]
+    if @user.save
+      # Handle a successful update.
+      redirect_to(:controller => 'sessions', :action => 'home')
+    else
+      render 'edit'
+    end
+  end
+  
+  def index
+    
+  end
+  
 end

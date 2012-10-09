@@ -14,6 +14,11 @@
     <div class="navbar-inner">
       <div class="container">
         <%= link_to "GettysTours", '#', id: "logo" %>
+        <% if session[:user_id].nil? %>
+          <% else %>
+            <% user2 = User.find session[:user_id] %>
+            <%= user2.username %>
+        <% end %>
         <nav>
           <ul class="nav pull-right">
             <li><%= link_to "Home", {:controller => 'sessions', :action => 'home'} %></li>
