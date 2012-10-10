@@ -5,6 +5,12 @@
     <p><center>Username or Email: </br> <%= text_field_tag(:username_or_email)%></center></p>
     <p><center>Password: </br> <%=password_field_tag :login_password %></center></p>
     <center><%=submit_tag("login") %></center>
+    <% if @attempt == false %>
+      <p><center><k>Username or Password incorrect </k></center></p>
+    <% end %>
   <% end %>
+  
+
+  
   <h2><center><%= link_to "New to this site?", {:controller =>'users', :action => 'new'} %></center></h2>
 </div>
